@@ -21,34 +21,42 @@ def numCompare(x, y):
         return 0
 
 #Functions doing the testing
-def testNumberComparator():
+def testNumberComparator(successCountA):
     print("assertValuesEqual test")
     print("If the two values are equal, then the test case passes, and if they are not equal,then the test case fails")
     assert numCompare(1, 1) == 0, "The two values are not equal"
+    successCountA += 1
 
 
     print("assertValuesNotEqual test")
     print("A test case passes when two values are not equal; otherwise, the test case fails")
     assert numCompare(1, 2) != 0, "The two values are equal"
+    successCountA += 1
 
     print("assertValuesGreater test")
     print("If the first value is greater than the second value, then the test passes, or else the test case fails")
     assert numCompare(2, 1) > 0, "The first value is not greater than the second value"
+    successCountA += 1
 
     print("assertValuesGreaterEqual")
     print("If value1 is greater than or equal to value2, then the test case passes, otherwise fails.")
     assert numCompare(1, 0) == 1 or 0, "The first value is less than the second value"
+    successCountA += 1
 
     print("assertValuesLess test")
     print("With assertValuesLess, a test case passes when value1 is less than value2, and the test case fails when value1 is less")
     assert numCompare(1, 2) == -1, "The first value is not less than the second value"
+    successCountA += 1
 
     print("assertValuesLessEqual test")
     print("The assertValuesLessEqual method passes the test case only when value1 is less than or equal to value2; otherwise, the test leads to failure.")
     assert numCompare(1, 2) == -1 or 0, "The first value is not less than or equal to the second value"
+    successCountA += 1
+
+    return successCountA
 
 
-def listComparator():
+def listComp(successCountB):
     #Declaring lists
     a = [1, 2, 3]
     b = [2, 3, 1]
@@ -58,15 +66,20 @@ def listComparator():
     print("assertListEqual test")
     print("The assertListEqual function allows us to compare two lists. When both lists contain the same elements, then the test case passes; if lists do not have the same elements, then the test case fails.")
     assert listComparator(a, b) == True, "The two lists are not equal"
+    successCountB += 1
 
-    print("")
+    return successCountB
+
+
+successCountA = 0
+successCountB = 0
 
 print("Testing Question 1")
-testNumberComparator()
-print("\nFinished testing Question 1 with no Errors")
+successCountA = testNumberComparator(successCountA)
+print("\nFinished testing Question 1 with " + str( 6 - successCountA) + " Error(s)\n")
 
 print("Testing Question 2")
-listComparator()
-print("\nFinished testing Question 2 with no Errors")
+successCountB = listComp(successCountB)
+print("\nFinished testing Question 2 with " + str( 1 - successCountB) + " Error(s)")
 
 print("Testing Complete")
